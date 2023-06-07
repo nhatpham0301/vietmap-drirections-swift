@@ -4,8 +4,8 @@ typealias JSONDictionary = [String: Any]
 public let MBDirectionsErrorDomain = "MBDirectionsErrorDomain"
 
 /// The Mapbox access token specified in the main application bundle’s Info.plist.
-let defaultAccessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as? String
-let defaultApiEndPointURLString = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAPIBaseURL") as? String
+let defaultAccessToken = Bundle.main.object(forInfoDictionaryKey: "VietMapAccessToken") as? String
+let defaultApiEndPointURLString = Bundle.main.object(forInfoDictionaryKey: "VietMapAPIBaseURL") as? String
 
 /// The user agent string for any HTTP requests performed directly within this library.
 let userAgent: String = {
@@ -301,7 +301,7 @@ open class Directions: NSObject {
     @objc(URLForCalculatingDirectionsWithOptions:)
     open func url(forCalculating options: DirectionsOptions) -> URL {
         let params = options.params + [
-            URLQueryItem(name: "access_token", value: accessToken),
+            URLQueryItem(name: "apikey", value: accessToken),
         ]
         
         let unparameterizedURL = URL(string: options.path, relativeTo: apiEndpoint)!
